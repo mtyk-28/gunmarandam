@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+:root {
+  /* ── Core neutrals (warm-toned) ── */
+  --ink:    #1A1714;
+  --ink-2:  #7A736B;
+  --ink-3:  #B0A89E;
+  --paper:  #F6F3EE;
+  --white:  #FFFFFF;
+  --rule:   #E2DDD7;
+
+  /* ── Brand green ── */
+  --g:      #1D5035;
+  --g-2:    #2A6645;
+  --g-tint: #EBF3EF;
+
+  /* ── Reward amber ── */
+  --a:      #B86A00;
+  --a-2:    #D4840C;
+  --a-tint: #FDF4E7;
+
+  /* ── Legacy aliases (MapView compatibility) ── */
+  --green-950: #0D2118;
+  --green-900: #152B1E;
+  --green-800: #1A3D2A;
+  --green-700: #1D5035;
+  --green-500: #2A6645;
+  --green-100: #EBF3EF;
+  --gold-500:  #B86A00;
+  --gold-400:  #D4840C;
+  --gold-300:  #E5A81E;
+  --gold-100:  #FDF4E7;
+  --cream-50:  #F6F3EE;
+  --cream-100: #EDE9E2;
+  --gray-950:  #0A0A0A;
+  --gray-900:  #1A1714;
+  --gray-700:  #4A443D;
+  --gray-500:  #7A736B;
+  --gray-300:  #C8C0B8;
+  --gray-100:  #F0EDE8;
+
+  /* ── Radius ── */
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-full: 9999px;
+
+  /* ── Shadow ── */
+  --shadow-sm:    0 1px 4px rgba(0,0,0,0.07);
+  --shadow-md:    0 2px 12px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,0.12);
+  --shadow-green: 0 4px 20px rgba(29,80,53,0.30);
+  --shadow-gold:  0 4px 20px rgba(184,106,0,0.28);
+
+  /* ── Layout ── */
+  --nav-h: 56px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  overscroll-behavior: none;
+}
+
+#root { min-height: 100vh; }
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img { max-width: 100%; }
+
+.leaflet-container {
+  font-family: inherit;
+  border-radius: var(--radius-md);
+}

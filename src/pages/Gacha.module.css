@@ -1,0 +1,484 @@
+/* ── PAGE ── */
+.page {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 15%, #1C2820 0%, #09100D 65%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.backBtn {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: rgba(255,255,255,0.30);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: background 0.15s, color 0.15s;
+}
+.backBtn:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); }
+
+/* ── MACHINE SECTION ── */
+.machineSection {
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.machine {
+  position: relative;
+  width: 200px;
+}
+
+/* Dome */
+.dome {
+  width: 168px;
+  height: 84px;
+  margin: 0 auto;
+  border-radius: 84px 84px 0 0;
+  background: radial-gradient(ellipse at 42% 32%, rgba(210,245,255,0.26) 0%, rgba(140,205,255,0.06) 100%);
+  border: 2.5px solid rgba(180,225,255,0.22);
+  border-bottom: none;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s;
+}
+
+/* Idle dome pulse */
+.domeIdle {
+  animation: domePulse 2.6s ease-in-out infinite;
+}
+
+@keyframes domePulse {
+  0%, 100% { border-color: rgba(180,225,255,0.22); box-shadow: none; }
+  50%       { border-color: rgba(180,225,255,0.55); box-shadow: 0 0 22px rgba(130,210,255,0.18); }
+}
+
+/* Dome shine */
+.dome::after {
+  content: '';
+  position: absolute;
+  top: 10px; left: 26px;
+  width: 54px; height: 20px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  transform: rotate(-22deg);
+}
+
+.miniCap {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  opacity: 0.78;
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Machine body */
+.machineBody {
+  width: 200px;
+  height: 128px;
+  background: linear-gradient(160deg, #283040, #161820);
+  border-radius: 0 0 10px 10px;
+  border-top: 3px solid #383B52;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* Subtle horizontal lines texture */
+.machineBody::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 14px,
+    rgba(255,255,255,0.015) 14px,
+    rgba(255,255,255,0.015) 15px
+  );
+  border-radius: 0 0 10px 10px;
+  pointer-events: none;
+}
+
+.machineLabel {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.32em;
+  color: rgba(255,255,255,0.15);
+  white-space: nowrap;
+}
+
+.machinePanel {
+  position: absolute;
+  top: 34px;
+  left: 20px;
+  right: 20px;
+  height: 40px;
+  border: 1.5px solid rgba(255,255,255,0.05);
+  border-radius: 5px;
+  background: rgba(0,0,0,0.28);
+}
+
+/* Exit slot */
+.slot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 28px;
+  background: #06080A;
+  border-radius: 6px 6px 0 0;
+  border: 1.5px solid rgba(255,255,255,0.05);
+  border-bottom: none;
+}
+
+.slot::before {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 1px;
+}
+
+/* ── LEVER (button) ── */
+.lever {
+  position: absolute;
+  right: -34px;
+  top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 7px 7px;
+  transform: rotate(-28deg);
+  z-index: 5;
+  /* button reset */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: default;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.leverIdle {
+  cursor: pointer;
+  animation: leverHint 2.8s ease-in-out infinite;
+}
+
+@keyframes leverHint {
+  0%, 60%, 100% { transform: rotate(-28deg); }
+  75%  { transform: rotate(-14deg); }
+  88%  { transform: rotate(-28deg); }
+}
+
+.leverIdle:hover .leverKnob {
+  box-shadow: 0 2px 14px rgba(255,90,90,0.8), 0 0 28px rgba(255,60,60,0.4);
+  background: radial-gradient(circle at 35% 30%, #ff9090, #d03030);
+}
+
+/* Lever pull animation */
+.phasePulling .lever {
+  animation: leverPull 0.46s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes leverPull {
+  0%   { transform: rotate(-28deg); }
+  42%  { transform: rotate(42deg); }
+  100% { transform: rotate(-28deg); }
+}
+
+.leverShaft {
+  width: 7px;
+  height: 42px;
+  background: linear-gradient(90deg, #6a6a6a, #d8d8d8, #7a7a7a);
+  border-radius: 3.5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.leverKnob {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #ff7575, #a81c1c);
+  margin: 0 auto;
+  margin-top: 5px;
+  box-shadow: 0 2px 8px rgba(168,28,28,0.7);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+/* Machine status */
+.machineStatus {
+  min-height: 22px;
+  margin-top: 16px;
+  color: rgba(255,255,255,0.28);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* ── CAPSULE SECTION ── */
+.capsuleSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px 160px;
+  position: relative;
+}
+
+.capsuleArea {
+  position: relative;
+  width: 180px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ── CAPSULE WRAPPER ── */
+.capsuleWrap {
+  width: 152px;
+  position: relative;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+}
+
+.phaseDrop .capsuleWrap {
+  animation: capsuleDrop 0.84s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.phaseShake .capsuleWrap {
+  animation: capsuleShake 0.76s ease-in-out;
+}
+
+.phaseOpen .capsuleWrap,
+.phaseReveal .capsuleWrap {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@keyframes capsuleDrop {
+  0%   { transform: translateY(-320px) rotate(12deg); opacity: 0; }
+  54%  { transform: translateY(16px) rotate(-4deg); opacity: 1; }
+  70%  { transform: translateY(-16px) rotate(2deg); }
+  85%  { transform: translateY(7px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes capsuleShake {
+  0%, 100% { transform: rotate(0deg); }
+  10%  { transform: rotate(-12deg); }
+  23%  { transform: rotate(12deg); }
+  35%  { transform: rotate(-9deg); }
+  48%  { transform: rotate(9deg); }
+  60%  { transform: rotate(-5deg); }
+  73%  { transform: rotate(5deg); }
+  87%  { transform: rotate(-2deg); }
+}
+
+/* ── CAPSULE HALVES ── */
+.capsuleTop {
+  width: 152px;
+  height: 76px;
+  border-radius: 76px 76px 0 0;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.capsuleTopOpen {
+  animation: capsuleOpenTop 0.52s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes capsuleOpenTop {
+  to { transform: translateY(-92px); }
+}
+
+.shine {
+  position: absolute;
+  top: 13px;
+  left: 26px;
+  width: 44px;
+  height: 22px;
+  background: rgba(255,255,255,0.30);
+  border-radius: 50%;
+  transform: rotate(-28deg);
+  pointer-events: none;
+}
+
+.shineSmall {
+  position: absolute;
+  top: 22px;
+  left: 56px;
+  width: 18px;
+  height: 10px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  transform: rotate(-28deg);
+  pointer-events: none;
+}
+
+.capsuleBottom {
+  width: 152px;
+  height: 76px;
+  border-radius: 0 0 76px 76px;
+  border-top: 2.5px solid rgba(0,0,0,0.12);
+}
+
+/* Open glow */
+.openGlow {
+  position: absolute;
+  bottom: 74px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255,248,160,0.92) 0%,
+    rgba(255,210,40,0.46) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: glowExpand 0.52s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes glowExpand {
+  from { opacity: 0; transform: translateX(-50%) scale(0.15); }
+  to   { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+/* ── RESULT CARD ── */
+.resultCard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-radius: 22px 22px 0 0;
+  padding: 18px 24px calc(var(--nav-h) + 20px);
+  box-shadow: 0 -10px 52px rgba(0,0,0,0.38);
+  z-index: 10;
+  animation: cardSlideUp 0.40s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes cardSlideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.cardHandle {
+  width: 36px;
+  height: 4px;
+  background: var(--rule);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+.cardCats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.catChip {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--g-tint);
+  color: var(--g);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ptsChip {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--a-tint);
+  color: var(--a);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.spotName {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.spotMeta {
+  font-size: 12px;
+  color: var(--ink-3);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.spotDesc {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.65;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mapsLink {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--g);
+  text-decoration: none;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  background: var(--g-tint);
+  border-radius: var(--radius-full);
+}
+
+.mapsLink:hover {
+  text-decoration: underline;
+}
+
+.goBtn {
+  width: 100%;
+  padding: 16px;
+  background: var(--g);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-green);
+  transition: transform 0.12s;
+}
+
+.goBtn:active { transform: scale(0.97); }

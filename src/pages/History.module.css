@@ -1,0 +1,246 @@
+.container {
+  min-height: 100vh;
+  background: var(--paper);
+  padding-bottom: calc(var(--nav-h) + 24px);
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--g);
+  padding: 24px 24px 28px;
+  color: var(--white);
+}
+
+.headerInner {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.levelBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.levelNum {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--a-tint);
+  color: var(--a);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.06em;
+}
+
+.levelTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+}
+
+.statsCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.statCard {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.statNum {
+  font-size: 22px;
+  font-weight: 900;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.ptNext {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.progressBar {
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--a-2);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  min-width: 2px;
+}
+
+/* ── MAIN ── */
+.main {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px 20px 0;
+}
+
+/* ── EMPTY ── */
+.empty {
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.emptyIllustration {
+  font-size: 72px;
+  display: block;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.emptyTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.emptyText {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.startBtn {
+  padding: 15px 36px;
+  background: var(--g);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: var(--shadow-green);
+}
+
+/* ── VISIT LIST ── */
+.visitList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.visitCard {
+  background: var(--white);
+}
+
+.visitBody {
+  padding: 16px 18px;
+}
+
+.visitTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.visitName {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.visitPts {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--a);
+  background: var(--a-tint);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.visitMeta {
+  font-size: 12px;
+  color: var(--ink-3);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.missions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.missionIcons {
+  display: flex;
+  gap: 3px;
+  font-size: 14px;
+}
+
+.missionLabel {
+  font-size: 11px;
+  color: var(--ink-3);
+  font-weight: 700;
+}
+
+.missionLabelDone {
+  color: var(--g);
+}
+
+.visitComment {
+  font-size: 13px;
+  color: var(--ink-2);
+  background: var(--paper);
+  border-left: 3px solid var(--g);
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+}
+
+.revisitBtn {
+  font-size: 12px;
+  color: var(--g);
+  font-weight: 800;
+  background: none;
+  border: none;
+  padding: 0;
+  letter-spacing: 0.02em;
+}

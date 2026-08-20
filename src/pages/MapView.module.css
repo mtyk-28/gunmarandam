@@ -1,0 +1,327 @@
+.container {
+  min-height: 100vh;
+  background: var(--paper);
+  padding-bottom: calc(var(--nav-h) + 16px);
+}
+
+.header {
+  background: var(--g);
+  color: var(--white);
+  padding: 20px 16px 24px;
+}
+
+.headerInner {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statNum {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.statDivider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.2);
+}
+
+.progressBar {
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-300), var(--gold-500));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  min-width: 4px;
+}
+
+/* Filters */
+.filterSection {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-100);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 8px 0 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.filterRow {
+  display: flex;
+  gap: 6px;
+  padding: 0 12px 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filterRow::-webkit-scrollbar { display: none; }
+
+.filterBtn {
+  white-space: nowrap;
+  padding: 7px 14px;
+  background: var(--gray-100);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-700);
+  transition: all 0.15s;
+}
+
+.filterActive {
+  border-color: var(--green-700);
+  background: var(--green-100);
+  color: var(--green-800);
+}
+
+.toggleRow {
+  display: flex;
+  border-top: 1px solid var(--gray-100);
+}
+
+.toggleBtn {
+  flex: 1;
+  padding: 8px 4px;
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-500);
+  position: relative;
+}
+
+.toggleActive {
+  color: var(--green-700);
+}
+
+.toggleActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 24px; height: 2px;
+  background: var(--green-700);
+  border-radius: 1px;
+}
+
+/* Map */
+.mapWrapper {
+  height: 360px;
+  position: relative;
+}
+
+/* Leaflet popup overrides */
+:global(.leaflet-popup-content-wrapper) {
+  border-radius: 16px !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+:global(.leaflet-popup-content) {
+  margin: 0 !important;
+  width: 240px !important;
+}
+
+:global(.leaflet-popup-tip) {
+  display: none;
+}
+
+.popupContent {
+  padding: 16px;
+}
+
+.popupCats {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.popupCat {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.popupVisited {
+  font-size: 10px;
+  font-weight: 700;
+  background: #f0fdf4;
+  color: #15803d;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.popupName {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.popupArea {
+  font-size: 11px;
+  color: var(--gray-500);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.popupDesc {
+  font-size: 12px;
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.mapsLink {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #15803d;
+  text-decoration: none;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background: #f0fdf4;
+  border-radius: 999px;
+  text-align: center;
+}
+
+.mapsLink:hover {
+  text-decoration: underline;
+}
+
+.popupBtn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 12px 16px;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--gray-700);
+  font-weight: 600;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Area section */
+.areaSection {
+  padding: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.areaSectionTitle {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 12px;
+}
+
+.areaGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.areaItem {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.areaTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.areaName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.areaPct {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.areaBar {
+  height: 4px;
+  background: var(--gray-100);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.areaFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  min-width: 0;
+}
+
+.areaCount {
+  font-size: 11px;
+  color: var(--gray-500);
+  font-weight: 600;
+}
