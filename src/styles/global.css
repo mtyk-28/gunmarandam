@@ -74,7 +74,7 @@ body {
   overscroll-behavior: none;
 }
 
-#root { min-height: 100vh; }
+#root { min-height: 100vh; min-height: 100dvh; }
 
 button {
   -webkit-tap-highlight-color: transparent;

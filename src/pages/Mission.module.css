@@ -1,5 +1,6 @@
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--paper);
   padding-bottom: calc(var(--nav-h) + 72px); /* space for actionBar */
 }
@@ -7,6 +8,7 @@
 /* ── EMPTY STATE ── */
 .empty {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
