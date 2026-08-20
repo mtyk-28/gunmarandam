@@ -1,6 +1,19 @@
 import type { Visit, TransportType } from '../types';
 import { supabase } from './supabase';
 
+export async function uploadPhoto(base64: string, userId: string, spotId: string): Promise<string | null> {
+  const base64Data = base64.split(',')[1];
+  const mime = base64.split(';')[0].split(':')[1] ?? 'image/jpeg';
+  const ext = mime.split('/')[1] ?? 'jpg';
+  const bytes = Uint8Array.from(atob(base64Data), c => c.charCodeAt(0));
+  const blob = new Blob([bytes], { type: mime });
+  const path = `${userId}/${spotId}.${ext}`;
+  const { error } = await supabase.storage.from('visit-photos').upload(path, blob, { upsert: true, contentType: mime });
+  if (error) return null;
+  const { data } = supabase.storage.from('visit-photos').getPublicUrl(path);
+  return data.publicUrl;
+}
+
 export async function upsertVisit(visit: Visit, userId: string): Promise<void> {
   await supabase.from('visits').upsert({
     user_id: userId,
@@ -10,6 +23,7 @@ export async function upsertVisit(visit: Visit, userId: string): Promise<void> {
     transport: visit.transportType,
     memo: visit.comment,
     missions: visit.missionsCompleted,
+    photo_url: visit.photoUrl ?? null,
   }, { onConflict: 'user_id,spot_id' });
 }
 
@@ -28,6 +42,7 @@ export async function fetchVisits(userId: string): Promise<Visit[]> {
     missionsCompleted: Array.isArray(row.missions) ? (row.missions as boolean[]) : [],
     comment: (row.memo ?? '') as string,
     points: (row.points ?? 0) as number,
+    photoUrl: (row.photo_url ?? undefined) as string | undefined,
   }));
 }
 

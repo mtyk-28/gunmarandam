@@ -26,6 +26,7 @@ export interface Visit {
   missionsCompleted: boolean[];
   comment: string;
   points: number;
+  photoUrl?: string;
 }
 
 export interface UserState {

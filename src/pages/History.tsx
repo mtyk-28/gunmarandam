@@ -165,6 +165,14 @@ export default function History() {
                       </span>
                     </div>
 
+                    {visit.photoUrl && (
+                      <img
+                        src={visit.photoUrl}
+                        alt={`${spot.name}の写真`}
+                        className={styles.visitPhoto}
+                      />
+                    )}
+
                     {isEditing ? (
                       <div className={styles.editWrap}>
                         <textarea

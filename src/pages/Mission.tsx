@@ -5,7 +5,7 @@ import { loadState, addVisit, getVisitBySpotId } from '../utils/storage';
 import { TRANSPORT_LABELS, CATEGORY_LABELS } from '../types';
 import type { Visit } from '../types';
 import { useAuth } from '../contexts/AuthContext';
-import { upsertVisit } from '../lib/db';
+import { upsertVisit, uploadPhoto } from '../lib/db';
 import styles from './Mission.module.css';
 
 export default function Mission() {
@@ -66,8 +66,12 @@ export default function Mission() {
     };
   }
 
-  function handleRecord() {
-    const visit = buildVisit();
+  async function handleRecord() {
+    let photoUrl: string | undefined;
+    if (user && photo) {
+      photoUrl = (await uploadPhoto(photo, user.id, spot!.id)) ?? undefined;
+    }
+    const visit = { ...buildVisit(), photoUrl };
     addVisit(visit);
     if (user) upsertVisit(visit, user.id).catch(console.error);
     navigate('/');
