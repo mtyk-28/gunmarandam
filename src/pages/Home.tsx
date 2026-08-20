@@ -190,7 +190,7 @@ export default function Home() {
       style={{ backgroundImage: `linear-gradient(to bottom, rgba(9,17,12,0.30) 0%, rgba(9,17,12,0.50) 45%, rgba(7,13,10,0.86) 82%), url(${gachaBg})` }}
     >
       <header className={styles.topBar}>
-        <div className={styles.appName}>群馬ガチャ旅</div>
+        <div className={styles.appName}>群馬旅ガチャ</div>
         <div className={styles.levelTag}>Lv.{currentLevel.level}　{currentLevel.title}</div>
       </header>
 
@@ -225,7 +225,7 @@ export default function Home() {
           {/* ── MACHINE ── */}
           <div className={styles.machineSection}>
             <div className={styles.machine}>
-              <svg viewBox="0 0 260 260" className={styles.machineSvg} role="img" aria-label="群馬ガチャ旅の抽選機">
+              <svg viewBox="0 0 260 260" className={styles.machineSvg} role="img" aria-label="群馬旅ガチャの抽選機">
                 <defs>
                   <clipPath id="gachaDomeClip">
                     <path d="M130,8 C182,8 216,42 216,84 C216,116 216,140 216,140 L44,140 C44,140 44,116 44,84 C44,42 78,8 130,8 Z" />
@@ -281,7 +281,7 @@ export default function Home() {
                 />
 
                 <rect x="76" y="58" width="108" height="40" rx="9" fill="#ffffff" opacity="0.94" stroke="#0D2118" strokeWidth="1.5" />
-                <text x="130" y="78" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontWeight={900} fontSize="13" fill="#1D5035">群馬ガチャ旅</text>
+                <text x="130" y="78" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontWeight={900} fontSize="13" fill="#1D5035">群馬旅ガチャ</text>
                 <text x="130" y="91" textAnchor="middle" fontFamily="'Noto Sans JP', sans-serif" fontWeight={700} fontSize="6" fill="#0D2118" letterSpacing="1.5">GUNMA TRAVEL GACHA</text>
 
                 <rect x="42" y="137" width="176" height="12" rx="4" fill="#B86A00" stroke="#0D2118" strokeWidth="2" />

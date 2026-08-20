@@ -50,7 +50,7 @@ export default function Login() {
     <div className={styles.page}>
       <div className={styles.hero}>
         <div className={styles.logo}>🎲</div>
-        <div className={styles.appName}>群馬ランダム旅</div>
+        <div className={styles.appName}>群馬旅ガチャ</div>
         <p className={styles.subtitle}>群馬の知らないスポットを巡る旅</p>
       </div>
 
