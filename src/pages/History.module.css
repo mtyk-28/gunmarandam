@@ -245,3 +245,165 @@
   padding: 0;
   letter-spacing: 0.02em;
 }
+
+/* ── HEADER extras ── */
+.headerRight {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.logoutBtn {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
+  border-radius: var(--radius-xs);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.15s;
+}
+
+.logoutBtn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ── LOADING ── */
+.loadingWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.loadingText {
+  font-size: 14px;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+/* ── CARD ACTIONS ── */
+.cardActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.mgmtBtns {
+  display: flex;
+  gap: 8px;
+}
+
+.editBtn {
+  font-size: 11px;
+  color: var(--ink-2);
+  font-weight: 700;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-xs);
+  padding: 4px 10px;
+  transition: color 0.1s, border-color 0.1s;
+}
+
+.editBtn:hover {
+  color: var(--g);
+  border-color: var(--g);
+}
+
+.deleteBtn {
+  font-size: 11px;
+  color: #DC2626;
+  font-weight: 700;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: var(--radius-xs);
+  padding: 4px 10px;
+  transition: background 0.1s;
+}
+
+.deleteBtn:hover {
+  background: #FEE2E2;
+}
+
+/* ── EDIT MODE ── */
+.editWrap {
+  margin: 8px 0 6px;
+}
+
+.editArea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--g);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--white);
+  resize: vertical;
+  outline: none;
+  line-height: 1.6;
+}
+
+.editActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  justify-content: flex-end;
+}
+
+.cancelBtn {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-2);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-xs);
+  padding: 6px 14px;
+}
+
+.saveBtn {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--g);
+  border: none;
+  border-radius: var(--radius-xs);
+  padding: 6px 16px;
+  transition: background 0.1s;
+}
+
+.saveBtn:hover {
+  background: var(--g-2);
+}
+
+/* ── DELETE CONFIRM ── */
+.confirmRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: #FEF2F2;
+  border-radius: var(--radius-sm);
+}
+
+.confirmText {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 700;
+  color: #DC2626;
+}
+
+.deleteConfirmBtn {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--white);
+  background: #DC2626;
+  border: none;
+  border-radius: var(--radius-xs);
+  padding: 6px 14px;
+}

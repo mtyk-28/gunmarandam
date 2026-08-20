@@ -4,6 +4,8 @@ import { getSpotById } from '../data/spots';
 import { loadState, addVisit, getVisitBySpotId } from '../utils/storage';
 import { TRANSPORT_LABELS, CATEGORY_LABELS } from '../types';
 import type { Visit } from '../types';
+import { useAuth } from '../contexts/AuthContext';
+import { upsertVisit } from '../lib/db';
 import styles from './Mission.module.css';
 
 export default function Mission() {
@@ -18,6 +20,7 @@ export default function Mission() {
   );
   const [comment, setComment] = useState(existingVisit?.comment ?? '');
   const [photo, setPhoto] = useState<string | null>(null);
+  const { user } = useAuth();
   const fileRef = useRef<HTMLInputElement>(null);
 
   if (!spot) {
@@ -64,7 +67,9 @@ export default function Mission() {
   }
 
   function handleRecord() {
-    addVisit(buildVisit());
+    const visit = buildVisit();
+    addVisit(visit);
+    if (user) upsertVisit(visit, user.id).catch(console.error);
     navigate('/');
   }
 
