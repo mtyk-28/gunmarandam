@@ -53,6 +53,11 @@ export function getVisitBySpotId(spotId: string): Visit | undefined {
   return loadState().visits.find(v => v.spotId === spotId);
 }
 
+export function clearUserState(): void {
+  const state = loadState();
+  saveState({ ...defaultState, currentSpotId: state.currentSpotId, currentTransport: state.currentTransport, currentStyle: state.currentStyle });
+}
+
 const PREF_KEY = 'gunma_gacha_prefs';
 
 export function savePreferences(transports: TransportType[] | 'any', style: TravelStyle): void {

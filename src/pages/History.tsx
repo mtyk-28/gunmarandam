@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { fetchVisits, deleteVisit, updateVisitMemo, upsertVisit } from '../lib/db';
-import { loadState, updateCurrentSpot } from '../utils/storage';
+import { fetchVisits, deleteVisit, updateVisitMemo } from '../lib/db';
+import { updateCurrentSpot } from '../utils/storage';
 import { getSpotById, SPOTS } from '../data/spots';
 import { TRANSPORT_LABELS, LEVEL_THRESHOLDS } from '../types';
 import type { Visit } from '../types';
@@ -21,16 +21,7 @@ export default function History() {
     if (!user) return;
     (async () => {
       const remote = await fetchVisits(user.id);
-      if (remote.length === 0) {
-        const local = loadState().visits;
-        if (local.length > 0) {
-          await Promise.all(local.map(v => upsertVisit(v, user.id)));
-          const synced = await fetchVisits(user.id);
-          setVisits(synced);
-        }
-      } else {
-        setVisits(remote);
-      }
+      setVisits(remote);
       setDataLoading(false);
     })();
   }, [user]);
