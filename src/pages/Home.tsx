@@ -218,7 +218,7 @@ export default function Home() {
       ) : (
         <>
           <div className={styles.signboard}>
-            <span className={styles.signboardTitle}>群馬ガチャ</span>
+            <span className={styles.signboardTitle}>群馬旅ガチャ</span>
             <span className={styles.signboardSub}>今日はどこに行こう？</span>
           </div>
 
